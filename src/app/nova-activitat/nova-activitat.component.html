@@ -1,0 +1,50 @@
+<div class="fxLayout wrap">
+    <div fxFlex.gt-lg="33" fxFlex.gt-md="33" fxFlex.gt-xs="100" fxFlex="100" >
+        <alert></alert>
+        
+<h2>Nova Activitat</h2>
+
+
+ 
+                    
+<form action="/api/upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+    <input (change)="fileChange($event)" type="file"  id="file" aria-describedby="inputGroupFileAddon01">
+    <label for="file">Afegeix un fitxer</label>
+</div>
+<div *ngIf="submitted && !uploadedFiles">
+    <div style="color: red;">Selecciona un fitxer abans de crear l'activitat</div>
+</div>
+<label *ngIf = "uploadedFileName" for="btnUpload">{{uploadedFileName}}</label>
+</form>
+
+<form [formGroup]="assignaturaForm" (ngSubmit)="onSubmit()">
+<div class="form-group">
+<label for="nom">Nom</label>
+<input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+<div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+    <div *ngIf="f.nom.errors.required">Nom is required</div>
+</div>
+</div>
+<div class="form-group">
+    <label for="data">Data</label>
+    <input type="date" formControlName="data" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.data.errors }" />
+    <div *ngIf="submitted && f.data.errors" class="invalid-feedback">
+        <div *ngIf="f.data.errors.required">Any is required</div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="button-row">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Crear
+        </button>
+        <button style= "padding-left: 10px;"(click) = "cancelar()" class="btn btn-danger">
+            Cancelar
+        </button>
+    </div>
+</div>
+</form>
+
+    </div>
+</div>

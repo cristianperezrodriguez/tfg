@@ -1,0 +1,49 @@
+<div *ngIf = "assignatura" class="fxLayout wrap">
+    <div fxFlex.gt-lg="66" fxFlex.gt-md="66" fxFlex.gt-xs="100" fxFlex="100" >
+        
+        <h2>{{assignatura.nom}}</h2>
+        <h3>Codi {{assignatura.codi}} any {{assignatura.any}}</h3>
+        <div class="button-row">
+            <button [disabled]="loading" class="btn btn-success" (click) = "novaActivitat()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Crear
+            </button>
+            <button style= "padding-left: 10px;"(click) = "cancelar()" class="btn btn-danger">
+                Ordenar
+            </button>
+        </div>
+
+        
+        <div fxLayout="row wrap" style="padding-top: 10px; font-weight: bold;">
+            <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="33" fxFlex="33" >
+                <p>Nom</p>
+            </div>
+            <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="33" fxFlex="33" >
+                <p>Data</p>
+            </div>
+
+            
+            
+        </div>
+        
+        <div *ngFor="let activitat of activitats"  fxLayout="row wrap" style="padding-top: 10px;">
+            <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="33" fxFlex="33" >
+                <p>{{activitat.nom}}</p>
+            </div>
+            <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="33" fxFlex="33" >
+                <p>{{activitat.data}}</p>
+            </div>
+
+            <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="33" fxFlex="33" >
+                <button [disabled]="loading" class="btn btn-danger" (click)="borrarActivitat(activitat.id)">
+                    <i  class="material-icons">delete</i>
+                </button>
+                
+            </div>
+            
+        </div>
+        
+
+    </div>
+</div>
+

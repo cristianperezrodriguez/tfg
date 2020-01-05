@@ -1,0 +1,42 @@
+<div class="fxLayout wrap">
+    <div fxFlex.gt-lg="33" fxFlex.gt-md="33" fxFlex.gt-xs="100" fxFlex="100" >
+        <alert></alert>
+        
+<h2>Nova Assignatura</h2>
+<form [formGroup]="assignaturaForm" (ngSubmit)="onSubmit()">
+<div class="form-group">
+<label for="nom">Nom</label>
+<input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+<div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+    <div *ngIf="f.nom.errors.required">Nom is required</div>
+</div>
+</div>
+<div class="form-group">
+<label for="codi">Codi</label>
+<input type="text" formControlName="codi" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.codi.errors }" />
+<div *ngIf="submitted && f.codi.errors" class="invalid-feedback">
+    <div *ngIf="f.codi.errors.required">Codi is required</div>
+</div>
+</div>
+<div class="form-group">
+    <label for="any">Any</label>
+    <input type="number" placeholder="YYYY" min="0" formControlName="any" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.any.errors }" />
+    <div *ngIf="submitted && f.any.errors" class="invalid-feedback">
+        <div *ngIf="f.any.errors.required">Any is required</div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="button-row">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Crear
+        </button>
+        <button style= "padding-left: 10px;"(click) = "cancelar()" class="btn btn-danger">
+            Cancelar
+        </button>
+    </div>
+</div>
+</form>
+
+    </div>
+</div>

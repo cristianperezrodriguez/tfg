@@ -1,0 +1,29 @@
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px;
+  }
+   
+  [type="file"] + label {
+    background-color: rgb(56, 151, 64);
+    border-radius: .25rem;
+    margin: 0px 5px 5px 0px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+  }
+    
+  [type="file"]:focus + label,
+  [type="file"] + label:hover {
+      background-color: #2d5024;
+  }
+    
+  [type="file"]:focus + label {
+    outline: 1px dotted #000;
+  }
