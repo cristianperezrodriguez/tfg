@@ -21,6 +21,9 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 
+//ag-grid
+import { AgGridModule } from 'ag-grid-angular';
+
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppRoutes } from './app.routing';
@@ -39,6 +42,7 @@ import { NovaActivitatComponent } from './nova-activitat/nova-activitat.componen
     AppSidebarComponent,
     LoginComponent,
     HomeComponent,
+    AgGridModule,
     AlertComponent,
     NovaAssignaturaComponent,
     InfoAssignaturaComponent,
