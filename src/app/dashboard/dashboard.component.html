@@ -1,13 +1,10 @@
-<!-- ============================================================== -->
-<!-- Simple four boxes Row -->
-<!-- ============================================================== -->
 <div fxLayout="row wrap">
 <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="100" fxFlex="100" >
     <mat-card style="height:120px;">    
     <mat-card-content >
             <mat-card-title>Crear nova assignatura</mat-card-title>
             <mat-card-subtitle></mat-card-subtitle>
-            <button (click)= "newAssignatura()"  class="add-contact" class="add-contact  btn btn-success" ><i class="material-icons">add</i></button>
+            <button (click)= "newAssignatura()"  class="btn btn-success" ><i class="material-icons">add</i></button>
         </mat-card-content>
         
     </mat-card>
@@ -16,29 +13,29 @@
 <div fxLayout="row wrap">
     
     <div  *ngFor = "let assignatura of assignatures" fxFlex.gt-lg="33" fxFlex.gt-md="33" fxFlex.gt-xs="100" fxFlex="100" >
-    <!-- column -->    
-    <div >
-        <mat-card style="height:250px;">
-            <mat-card-content >
-                <div class="d-flex flex-wrap">
-                    <div>
-                        <mat-card-title>{{assignatura.codi}}</mat-card-title>
-                         <mat-card-subtitle>{{assignatura.nom}}</mat-card-subtitle> 
-                         <p>Any Acadèmic: {{assignatura.any}}</p> 
-                     </div>
-                </div>
-                <button (click)= "infoAssignatura(assignatura.id)" class="add-contact  btn btn-primary" ><i class="material-icons">create</i></button>
-            </mat-card-content>
-            <hr>
-            <mat-card-content >
-                info
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div>
-    <!-- column -->    
-    <!-- column -->    
+        <!-- column -->    
+        <div >
+            <mat-card style="height:250px;">
+                <mat-card-header class="position-relative">
+                    <div class="float-left">
+                        <mat-card-title>{{assignatura.nom}}</mat-card-title>
+                        <mat-card-subtitle>{{assignatura.codi}}</mat-card-subtitle> 
+                        <p>Any Acadèmic: {{assignatura.any}}</p> 
+                    </div>
+                    <div class="float-right">
+                        <button (click)= "infoAssignatura(assignatura.id)" class="btn btn-primary position-button-editar" ><i class="material-icons">create</i></button>
+                    </div>
+                </mat-card-header>
+                <hr>
+                <mat-card-content >
+                        <div>
+                                <span class="float-left">Llistat d'examens: </span>
+                                <button (click)= "llistatActivitatsAssignatura(assignatura.id)" class="btn btn-primary float-right" ><i class="material-icons">assignment</i></button>
+                        </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>  
     
-    <!-- column -->    
 </div>
 

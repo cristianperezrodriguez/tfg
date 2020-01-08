@@ -25,7 +25,7 @@ export class InfoAssignaturaComponent implements OnInit {
 
   ngOnInit() {
     this.getAssignatura();
-    this.getActivitatsAssignatura();
+    //this.getActivitatsAssignatura();
   }
 
   private getAssignatura() {

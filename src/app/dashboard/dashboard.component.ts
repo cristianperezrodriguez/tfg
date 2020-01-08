@@ -51,4 +51,8 @@ export class DashboardComponent implements AfterViewInit {
     infoAssignatura(id:number){
         this.router.navigate(['/infoAssignatura/' + id]);
     }
+
+    llistatActivitatsAssignatura(id:number){
+        this.router.navigate(['/llistatActivitatsAssignatura/' + id]);
+    }
 }

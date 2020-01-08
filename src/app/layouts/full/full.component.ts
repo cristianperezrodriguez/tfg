@@ -29,6 +29,7 @@ export class FullComponent implements OnDestroy, AfterViewInit {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
+    private router: Router,
     public menuItems: MenuItems
   ) {
     this.mobileQuery = media.matchMedia('(min-width: 768px)');
@@ -39,5 +40,10 @@ export class FullComponent implements OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+  
   ngAfterViewInit() {}
+  
+  navTo(navLink){
+    this.router.navigate(['/'+navLink]);
+  }
 }

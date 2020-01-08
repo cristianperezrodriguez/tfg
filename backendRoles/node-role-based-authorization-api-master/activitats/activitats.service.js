@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 const Role = require('_helpers/role');
 
 var activitats = [
-    { id: 1, id_assignatura: 1, nom: 'examen1', data: '2015-03-25', fileName: ''},
-    { id: 2, id_assignatura: 1, nom: 'examen2', data: '2015-03-26',fileName: ''},
-    { id: 3, id_assignatura: 2, nom: 'examen2', data: '2015-03-26', fileName: ''}
+    { id: 1, id_assignatura: 1, nom: 'examen1', data: '2015-03-25', fileName: '', percentatge_correccio: 0.5},
+    { id: 2, id_assignatura: 1, nom: 'examen2', data: '2015-03-26', fileName: '', percentatge_correccio: 0.2},
+    { id: 3, id_assignatura: 2, nom: 'examen2', data: '2015-03-26', fileName: '', percentatge_correccio: 1}
 ];
 /*
 id: number;
@@ -30,7 +30,6 @@ async function getAllByIdAssignatura(idAssignatura) {
     const activ = activitats.filter(u =>u.id_assignatura === parseInt(idAssignatura) );
     if (!activ) return;
     return activ;
-
 }
 
 async function getById(id) {

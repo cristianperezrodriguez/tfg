@@ -69,7 +69,7 @@ export class NovaActivitatComponent implements OnInit {
         this.loading = true;
         this.upload();
         var idAssignatura = +this.route.snapshot.paramMap.get('id');
-        let activitatAux = new Activitat(idAssignatura,this.f.nom.value, this.f.data.value, this.uploadedFilePath);
+        let activitatAux = new Activitat(idAssignatura,this.f.nom.value, this.f.data.value, this.uploadedFilePath, 0);
         this.activitatsService.addNewActivitat(activitatAux)
             .pipe(first())
             .subscribe(

@@ -6,31 +6,9 @@
     <!-- Topbar - style you can find in header.scss -->
     <!-- ============================================================== -->
     <mat-toolbar color="primary" class="topbar telative">
-        <!-- ============================================================== -->
-        <!-- Logo - style you can find in header.scss -->
-        <!-- ============================================================== -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
-                <!-- Logo icon --><b>
-                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                    <!-- 
-                    <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo">
-                     
-                    <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo">-->
-                </b>
-                <!--End Logo icon -->
-                <!-- Logo text -->
-                <span fxShow="false" fxShow.gt-xs>
-                 <!-- dark Logo text 
-                 <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo">
-                  
-                 <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage">-->
-                </span> </a>
-        </div>
-        <!-- ============================================================== -->
-        <!-- sidebar toggle -->
-        <!-- ============================================================== -->
-        
+        <button mat-icon-button (click)="navTo('dashboard')" >
+            <mat-icon>home</mat-icon>
+        </button>
         <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
             <mat-icon>menu</mat-icon>
         </button>

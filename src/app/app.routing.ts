@@ -7,6 +7,7 @@ import { AuthGuard } from './_helpers';
 import { NovaAssignaturaComponent } from './nova-assignatura/nova-assignatura.component';
 import { InfoAssignaturaComponent } from './info-assignatura/info-assignatura.component';
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
+import { LlistatActivitatsAssignaturaComponent} from './llistat-activitats-assignatura/llistat-activitats-assignatura.component'
 /*
 export const AppRoutes: Routes = [
   {
@@ -49,11 +50,13 @@ export const AppRoutes: Routes = [
       },
       {
         path: 'dashboard', canActivate: [AuthGuard],
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: 
+          () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       { path: 'novaAssignatura', component: NovaAssignaturaComponent },
       { path: 'infoAssignatura/:id', component: InfoAssignaturaComponent },
-      { path: 'novaActivitat/:id', component: NovaActivitatComponent }
+      { path: 'novaActivitat/:id', component: NovaActivitatComponent },
+      { path: 'llistatActivitatsAssignatura/:id', component: LlistatActivitatsAssignaturaComponent }
     ]
   },
   { path: 'login', component: LoginComponent },

@@ -21,9 +21,6 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 
-//ag-grid
-import { AgGridModule } from 'ag-grid-angular';
-
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppRoutes } from './app.routing';
@@ -32,6 +29,10 @@ import { NovaAssignaturaComponent } from './nova-assignatura/nova-assignatura.co
 import { InfoAssignaturaComponent } from './info-assignatura/info-assignatura.component';
 import { ActivitatsComponent } from './activitats/activitats.component';
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
+import { LlistatActivitatsAssignaturaComponent } from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
+
+//ag-grid
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -42,12 +43,12 @@ import { NovaActivitatComponent } from './nova-activitat/nova-activitat.componen
     AppSidebarComponent,
     LoginComponent,
     HomeComponent,
-    AgGridModule,
     AlertComponent,
     NovaAssignaturaComponent,
     InfoAssignaturaComponent,
     ActivitatsComponent,
-    NovaActivitatComponent
+    NovaActivitatComponent,
+    LlistatActivitatsAssignaturaComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +59,8 @@ import { NovaActivitatComponent } from './nova-activitat/nova-activitat.componen
     HttpClientModule,
     SharedModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    AgGridModule.withComponents([])
   ],
   providers: [
     {
