@@ -31,7 +31,7 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
   }
 
   columnDefs = [
-    {field: 'id', sortable: true, resizable: true, maxWidth: 70, filter: true , headerName: 'Id', cellClass: "verticalAlignText"},
+    // {field: 'id', sortable: true, resizable: true, maxWidth: 70, filter: true , headerName: 'Id', cellClass: "verticalAlignText"},
     {field: 'nom', sortable: true, resizable: true, filter: true , headerName: 'Nom', cellClass: "verticalAlignText"},
     {field: 'data', sortable: true, resizable: true, maxWidth: 150, filter: true , headerName: 'Data del examen', cellClass: "verticalAlignText"},
     {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: ["verticalAlignText","horizontalAlignText"], cellRenderer: function(params) {
@@ -39,23 +39,39 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
     }},
     {
       headerName: '',
-      cellClass: "verticalAlignText",
+      cellClass:  ["verticalAlignText","horizontalAlignText"],
       cellRendererFramework: ButtonRendererComponent,
       cellRendererParams: {
-        onClick: this.onBtnClick1.bind(this),
+        onClick: this.onClickButtonLlistatPreguntes.bind(this),
         label: 'Preguntes',
-        materialIcon: 'format_list_numbered',
+        // materialIcon: '',
         title: 'LListat de preguntes'
       },
-      autoHeight: true
+      autoHeight: true,
+      maxWidth: 100
     },
+    {
+      headerName: '',
+      cellClass: ["verticalAlignText","horizontalAlignText"],
+      cellRendererFramework: ButtonRendererComponent,
+      cellRendererParams: {
+        onClick: this.onClickButtonLlistatPreguntes.bind(this),
+        label: 'Corregir',
+        // materialIcon: 'format_list_numbered',
+        title: 'Corregir examen'
+      },
+      autoHeight: true,
+      maxWidth: 80
+    }
     
   ];
-  onGridSizeChanged(params){
-    params.api.sizeColumnsToFit();
-  }
+
   ngOnInit() {
     this.getActivitatsAssignatura();
+  }
+  
+  onGridSizeChanged(params){
+    params.api.sizeColumnsToFit();
   }
 
   onFirstDataRendered(params) {
@@ -71,14 +87,12 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
     this.rowData = activitats;
   }
  
-  llistatActivitatsAssignatura(id:number){
-    this.router.navigate(['/llistatActivitatsAssignatura/' + id]);
+  llistatPreguntesActivitat(id_assignatura:number, id_activitat:number){
+    this.router.navigate(['/llistatPreguntesActivitat/' + id_assignatura + '/' + id_activitat]);
   }
-  onBtnClick1(e) {
-    this.llistatActivitatsAssignatura(e.rowData.id);
+
+  onClickButtonLlistatPreguntes(e) {
+    this.llistatPreguntesActivitat(e.rowData.id_assignatura, e.rowData.id);
   }
-  
-  onBtnClick2(e) {
-    alert(e);
-  }
+
 }

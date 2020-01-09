@@ -13,10 +13,7 @@ router.get('/:id', authorize(), getById);
 router.post('/add', authorize(), add); 
 router.get('/byAssignatura/:idAssignatura', authorize(), getAllByIdAssignatura);     // all authenticated users
 
-
 module.exports = router;
-
-
 
 function getAll(req, res, next) {
     activitatService.getAll()

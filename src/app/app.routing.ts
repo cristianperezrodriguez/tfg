@@ -7,7 +7,8 @@ import { AuthGuard } from './_helpers';
 import { NovaAssignaturaComponent } from './nova-assignatura/nova-assignatura.component';
 import { InfoAssignaturaComponent } from './info-assignatura/info-assignatura.component';
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
-import { LlistatActivitatsAssignaturaComponent} from './llistat-activitats-assignatura/llistat-activitats-assignatura.component'
+import { LlistatActivitatsAssignaturaComponent} from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
+import { LlistatPreguntesActivitatComponent} from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
 /*
 export const AppRoutes: Routes = [
   {
@@ -56,7 +57,8 @@ export const AppRoutes: Routes = [
       { path: 'novaAssignatura', component: NovaAssignaturaComponent },
       { path: 'infoAssignatura/:id', component: InfoAssignaturaComponent },
       { path: 'novaActivitat/:id', component: NovaActivitatComponent },
-      { path: 'llistatActivitatsAssignatura/:id', component: LlistatActivitatsAssignaturaComponent }
+      { path: 'llistatActivitatsAssignatura/:id', component: LlistatActivitatsAssignaturaComponent },
+      { path: 'llistatPreguntesActivitat/:id/:id_activitat', component: LlistatPreguntesActivitatComponent }
     ]
   },
   { path: 'login', component: LoginComponent },

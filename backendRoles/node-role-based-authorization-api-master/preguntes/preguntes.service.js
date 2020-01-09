@@ -3,26 +3,26 @@ const jwt = require('jsonwebtoken');
 const Role = require('_helpers/role');
 
 var preguntes = [
-    { id: 1, id_assignatura: 1, id_activitat: 1, numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1, percentatge_correccio: 0.8},
-    { id: 2, id_assignatura: 1, id_activitat: 1, numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.4},
-    { id: 3, id_assignatura: 1, id_activitat: 1, numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.2},
-    { id: 4, id_assignatura: 1, id_activitat: 1, numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.2},
-    { id: 5, id_assignatura: 1, id_activitat: 1, numero_pregunta: 5, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.1},
-    { id: 6, id_assignatura: 2, id_activitat: 1, numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0},
-    { id: 7, id_assignatura: 2, id_activitat: 1, numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.4},
-    { id: 8, id_assignatura: 2, id_activitat: 1, numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.7},
-    { id: 9, id_assignatura: 2, id_activitat: 1, numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.7}
+    { id: 1, id_assignatura: 1, id_activitat: 1, numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1, percentatge_correccio: 0.8, fileName: ''},
+    { id: 2, id_assignatura: 1, id_activitat: 1, numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.4, fileName: ''},
+    { id: 3, id_assignatura: 1, id_activitat: 1, numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.2, fileName: ''},
+    { id: 4, id_assignatura: 1, id_activitat: 1, numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.3, fileName: ''},
+    { id: 5, id_assignatura: 1, id_activitat: 1, numero_pregunta: 5, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.1, fileName: ''},
+    { id: 6, id_assignatura: 1, id_activitat: 2, numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0, fileName: ''},
+    { id: 7, id_assignatura: 1, id_activitat: 2, numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.4, fileName: ''},
+    { id: 8, id_assignatura: 1, id_activitat: 2, numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.7, fileName: ''},
+    { id: 9, id_assignatura: 1, id_activitat: 2, numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.7, fileName: ''},
+    { id: 10, id_assignatura: 2, id_activitat: 1, numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1, percentatge_correccio: 0.8, fileName: ''},
+    { id: 11, id_assignatura: 2, id_activitat: 1, numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.4, fileName: ''},
+    { id: 12, id_assignatura: 2, id_activitat: 1, numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.2, fileName: ''},
+    { id: 13, id_assignatura: 2, id_activitat: 1, numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 1.5, percentatge_correccio: 0.2, fileName: ''},
+    { id: 14, id_assignatura: 2, id_activitat: 1, numero_pregunta: 5, valoracio_minima: 0, valoracio_maxima: 3, percentatge_correccio: 0.1, fileName: ''}
 ];
-/*
-id: number;
-    codi: string;
-    nom: string;
-    any:string;*/
 
 module.exports = {
     getAll,
     getById,
-    getAllByIdActivitat,
+    getAllByIdActivitatAndAssignatura,
     update
 };
 
@@ -38,8 +38,8 @@ async function getById(id) {
     return activitat;
 }
 
-async function getAllByIdActivitat(idActivitat) {
-    const activ = preguntes.filter(u =>u.id_activitat === parseInt(idActivitat) );
+async function getAllByIdActivitatAndAssignatura(id_assignatura, id_activitat) {
+    const activ = preguntes.filter(u =>u.id_assignatura === parseInt(id_assignatura) && u.id_activitat === parseInt(id_activitat));
     if (!activ) return;
     return activ;
 }

@@ -11,12 +11,9 @@ const multipartMiddleware = multipart({
 router.get('/', authorize(Role.Admin), getAll); // admin only
 router.get('/:id', authorize(), getById);   
 router.post('/update', authorize(), update); 
-router.get('/byAssignatura/:idAssignatura', authorize(), getAllByIdAssignatura);     // all authenticated users
-
+router.get('/byAssignaturaAndActivitat/:id_assignatura/:id_activitat', authorize(), getAllByIdActivitatAndAssignatura);     // all authenticated users
 
 module.exports = router;
-
-
 
 function getAll(req, res, next) {
     preguntesService.getAll()
@@ -30,8 +27,8 @@ function getById(req, res, next) {
         .catch(err => next(err));
 }
 
-function getAllByIdAssignatura(req, res, next) {
-    preguntesService.getAllByIdAssignatura(req.params.idAssignatura)
+function getAllByIdActivitatAndAssignatura(req, res, next) {
+    preguntesService.getAllByIdActivitatAndAssignatura(req.params.id_assignatura, req.params.id_activitat)
         .then(preguntes => res.json(preguntes))
         .catch(err => next(err));
 }

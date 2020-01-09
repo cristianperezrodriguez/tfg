@@ -34,6 +34,7 @@ import { ActivitatsComponent } from './activitats/activitats.component';
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
 import { LlistatActivitatsAssignaturaComponent } from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
 import { ButtonRendererComponent } from './button-renderer/button-renderer.component';
+import { LlistatPreguntesActivitatComponent } from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ButtonRendererComponent } from './button-renderer/button-renderer.compo
     ActivitatsComponent,
     NovaActivitatComponent,
     LlistatActivitatsAssignaturaComponent,
-    ButtonRendererComponent
+    ButtonRendererComponent,
+    LlistatPreguntesActivitatComponent
   ],
   imports: [
     BrowserModule,
