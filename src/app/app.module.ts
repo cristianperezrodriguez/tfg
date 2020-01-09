@@ -21,6 +21,9 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { LoginComponent } from './login';
 import { HomeComponent } from './home';
 
+//ag-grid
+import { AgGridModule } from 'ag-grid-angular';
+
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppRoutes } from './app.routing';
@@ -30,9 +33,7 @@ import { InfoAssignaturaComponent } from './info-assignatura/info-assignatura.co
 import { ActivitatsComponent } from './activitats/activitats.component';
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
 import { LlistatActivitatsAssignaturaComponent } from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
-
-//ag-grid
-import { AgGridModule } from 'ag-grid-angular';
+import { ButtonRendererComponent } from './button-renderer/button-renderer.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AgGridModule } from 'ag-grid-angular';
     InfoAssignaturaComponent,
     ActivitatsComponent,
     NovaActivitatComponent,
-    LlistatActivitatsAssignaturaComponent
+    LlistatActivitatsAssignaturaComponent,
+    ButtonRendererComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,7 @@ import { AgGridModule } from 'ag-grid-angular';
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([ButtonRendererComponent])
   ],
   providers: [
     {
