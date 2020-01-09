@@ -31,11 +31,11 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
   }
 
   columnDefs = [
-    {field: 'id', sortable: true, resizable: true, maxWidth: 70, filter: true , headerName: 'Id'},
-    {field: 'nom', sortable: true, resizable: true, filter: true , headerName: 'Nom'},
-    {field: 'data', sortable: true, resizable: true, maxWidth: 150, filter: true , headerName: 'Data del examen'},
-    {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellRenderer: function(params) {
-        return '<span style="position: absolute;">'+params.value*100+'%</span><span class="fonsPercentatge" style="position: absolute;width:'+params.value*100+'%;height: 100%;background-color: rgb(89, 202, 89);z-index: -1;"></span>';
+    {field: 'id', sortable: true, resizable: true, maxWidth: 70, filter: true , headerName: 'Id', cellClass: "verticalAlignText"},
+    {field: 'nom', sortable: true, resizable: true, filter: true , headerName: 'Nom', cellClass: "verticalAlignText"},
+    {field: 'data', sortable: true, resizable: true, maxWidth: 150, filter: true , headerName: 'Data del examen', cellClass: "verticalAlignText"},
+    {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: ["verticalAlignText","horizontalAlignText"], cellRenderer: function(params) {
+        return '<span>'+params.value*100+'%</span><span class="fonsPercentatge" style="width:'+params.value*100+'%"></span>';
     }},
     {
       headerName: 'Accións',
