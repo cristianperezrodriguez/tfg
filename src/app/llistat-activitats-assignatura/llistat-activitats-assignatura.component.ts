@@ -17,9 +17,9 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
   frameworkComponents: any;
   activitats = [];
   rowData;
+  domLayout='autoHeight';
   style = {
     width: '100%',
-    height: '100%',
     boxSizing: 'border-box'
   };
   
@@ -38,11 +38,12 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
         return '<span>'+params.value*100+'%</span><span class="fonsPercentatge" style="width:'+params.value*100+'%"></span>';
     }},
     {
-      headerName: 'Accións',
+      headerName: '',
+      cellClass: "verticalAlignText",
       cellRendererFramework: ButtonRendererComponent,
       cellRendererParams: {
         onClick: this.onBtnClick1.bind(this),
-        label: '',
+        label: 'Preguntes',
         materialIcon: 'format_list_numbered',
         title: 'LListat de preguntes'
       },
@@ -50,12 +51,18 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
     },
     
   ];
+  onGridSizeChanged(params){
+    params.api.sizeColumnsToFit();
+  }
   ngOnInit() {
     this.getActivitatsAssignatura();
   }
 
   onFirstDataRendered(params) {
     params.api.sizeColumnsToFit();
+    window.onresize = () => {
+      params.api.sizeColumnsToFit();
+    }
   }
 
   getActivitatsAssignatura() {
