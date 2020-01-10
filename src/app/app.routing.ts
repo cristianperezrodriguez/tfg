@@ -9,6 +9,7 @@ import { InfoAssignaturaComponent } from './info-assignatura/info-assignatura.co
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
 import { LlistatActivitatsAssignaturaComponent} from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
 import { LlistatPreguntesActivitatComponent} from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
+import { VisorPdfComponent} from './visor-pdf/visor-pdf.component';
 /*
 export const AppRoutes: Routes = [
   {
@@ -58,7 +59,8 @@ export const AppRoutes: Routes = [
       { path: 'infoAssignatura/:id', component: InfoAssignaturaComponent },
       { path: 'novaActivitat/:id', component: NovaActivitatComponent },
       { path: 'llistatActivitatsAssignatura/:id', component: LlistatActivitatsAssignaturaComponent },
-      { path: 'llistatPreguntesActivitat/:id/:id_activitat', component: LlistatPreguntesActivitatComponent }
+      { path: 'llistatPreguntesActivitat/:id/:id_activitat', component: LlistatPreguntesActivitatComponent },
+      { path: 'corregirActivitat/:id', component: VisorPdfComponent }
     ]
   },
   { path: 'login', component: LoginComponent },

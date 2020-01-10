@@ -49,7 +49,8 @@ export class LlistatPreguntesActivitatComponent implements OnInit {
         title: 'Corregir pregunta'
       },
       autoHeight: true,
-      maxWidth: 80
+      maxWidth: 80,
+      minWidth: 60
     },
     
   ];
@@ -64,9 +65,9 @@ export class LlistatPreguntesActivitatComponent implements OnInit {
 
   onFirstDataRendered(params) {
     params.api.sizeColumnsToFit();
-    window.onresize = () => {
-      params.api.sizeColumnsToFit();
-    }
+    // window.onresize = () => {
+    //   params.api.sizeColumnsToFit();
+    // }
   }
 
   getPreguntesByAssignaturaAndActivitat() {

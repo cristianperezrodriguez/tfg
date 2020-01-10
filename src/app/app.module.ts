@@ -23,6 +23,8 @@ import { HomeComponent } from './home';
 
 //ag-grid
 import { AgGridModule } from 'ag-grid-angular';
+//ng2-pdf-viewer
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -35,6 +37,7 @@ import { NovaActivitatComponent } from './nova-activitat/nova-activitat.componen
 import { LlistatActivitatsAssignaturaComponent } from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
 import { ButtonRendererComponent } from './button-renderer/button-renderer.component';
 import { LlistatPreguntesActivitatComponent } from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
+import { VisorPdfComponent } from './visor-pdf/visor-pdf.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { LlistatPreguntesActivitatComponent } from './llistat-preguntes-activita
     NovaActivitatComponent,
     LlistatActivitatsAssignaturaComponent,
     ButtonRendererComponent,
-    LlistatPreguntesActivitatComponent
+    LlistatPreguntesActivitatComponent,
+    VisorPdfComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,8 @@ import { LlistatPreguntesActivitatComponent } from './llistat-preguntes-activita
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes),
-    AgGridModule.withComponents([ButtonRendererComponent])
+    AgGridModule.withComponents([ButtonRendererComponent]),
+    PdfViewerModule
   ],
   providers: [
     {

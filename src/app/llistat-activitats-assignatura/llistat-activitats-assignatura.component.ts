@@ -33,7 +33,7 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
   columnDefs = [
     // {field: 'id', sortable: true, resizable: true, maxWidth: 70, filter: true , headerName: 'Id', cellClass: "verticalAlignText"},
     {field: 'nom', sortable: true, resizable: true, filter: true , headerName: 'Nom', cellClass: "verticalAlignText"},
-    {field: 'data', sortable: true, resizable: true, maxWidth: 150, filter: true , headerName: 'Data del examen', cellClass: "verticalAlignText"},
+    {field: 'data', sortable: true, resizable: true, maxWidth: 150, minWidth: 90, filter: true , headerName: 'Data del examen', cellClass: "verticalAlignText"},
     {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: ["verticalAlignText","horizontalAlignText"], cellRenderer: function(params) {
         return '<span>'+params.value*100+'%</span><span class="fonsPercentatge" style="width:'+params.value*100+'%"></span>';
     }},
@@ -48,20 +48,22 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
         title: 'LListat de preguntes'
       },
       autoHeight: true,
-      maxWidth: 100
+      maxWidth: 100,
+      minWidth: 80
     },
     {
       headerName: '',
       cellClass: ["verticalAlignText","horizontalAlignText"],
       cellRendererFramework: ButtonRendererComponent,
       cellRendererParams: {
-        onClick: this.onClickButtonLlistatPreguntes.bind(this),
+        onClick: this.onClickButtonCorregirActivitat.bind(this),
         label: 'Corregir',
         // materialIcon: 'format_list_numbered',
         title: 'Corregir examen'
       },
       autoHeight: true,
-      maxWidth: 80
+      maxWidth: 80,
+      minWidth: 60
     }
     
   ];
@@ -76,9 +78,9 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
 
   onFirstDataRendered(params) {
     params.api.sizeColumnsToFit();
-    window.onresize = () => {
-      params.api.sizeColumnsToFit();
-    }
+    // window.onresize = () => {
+    //   params.api.sizeColumnsToFit();
+    // }
   }
 
   getActivitatsAssignatura() {
@@ -93,6 +95,14 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
 
   onClickButtonLlistatPreguntes(e) {
     this.llistatPreguntesActivitat(e.rowData.id_assignatura, e.rowData.id);
+  }
+
+  corregirActivitat(id_activitat:number){
+    this.router.navigate(['/corregirActivitat/' + id_activitat]);
+  }
+
+  onClickButtonCorregirActivitat(e) {
+    this.corregirActivitat(e.rowData.id);
   }
 
 }
