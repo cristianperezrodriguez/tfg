@@ -23,6 +23,7 @@ export class CorreccioExamenComponent implements OnInit {
   ngOnInit() {
     this.onResize();
     $("#parentDiv").height($("#parentDiv").height() - $(".navegacioPreguntes").height());
+    this.scrollTo("capcaleraExamen");
     _.each($(".menuPregunta"), function(a,b,c){
       if(a.id != "criteris-" + this.currentSection){
         $(a).removeClass("criterisVisibles");
