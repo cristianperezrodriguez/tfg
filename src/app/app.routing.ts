@@ -9,33 +9,10 @@ import { InfoAssignaturaComponent } from './info-assignatura/info-assignatura.co
 import { NovaActivitatComponent } from './nova-activitat/nova-activitat.component';
 import { LlistatActivitatsAssignaturaComponent} from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
 import { LlistatPreguntesActivitatComponent} from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
-import { VisorPdfComponent} from './visor-pdf/visor-pdf.component';
-/*
-export const AppRoutes: Routes = [
-  {
-    path: '',
-    component: FullComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: '',
-        loadChildren:
-          () => import('./material-component/material.module').then(m => m.MaterialComponentsModule)
-      },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
-    ]
-  }
-];*/
+import { CorreccioExamenComponent } from './correccio-examen/correccio-examen.component';
+
 
 export const AppRoutes: Routes = [
-  /*{ path: '', component: HomeComponent, canActivate: [AuthGuard] },*/
   {
     path: '',
     component: FullComponent, canActivate: [AuthGuard],
@@ -60,7 +37,7 @@ export const AppRoutes: Routes = [
       { path: 'novaActivitat/:id', component: NovaActivitatComponent },
       { path: 'llistatActivitatsAssignatura/:id', component: LlistatActivitatsAssignaturaComponent },
       { path: 'llistatPreguntesActivitat/:id/:id_activitat', component: LlistatPreguntesActivitatComponent },
-      { path: 'corregirActivitat/:id', component: VisorPdfComponent }
+      { path: 'corregirActivitat/:id', component: CorreccioExamenComponent }
     ]
   },
   { path: 'login', component: LoginComponent },
@@ -69,5 +46,3 @@ export const AppRoutes: Routes = [
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
-
-//export const appRoutingModule = RouterModule.forRoot(AppRoutes);

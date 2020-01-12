@@ -1,0 +1,75 @@
+.page-content{
+    padding: 0 !important;
+}
+.height500px{
+    height: 500px;
+}
+
+.menuCriteris{
+    transition-duration: 300ms;
+    background-color: lightcoral;
+    position: fixed;
+    height:calc(100vh - 64px);
+    width: 20%;
+    top: 64px;
+    right: 0;
+    padding: 0;
+    margin: 0;
+}
+#parentDiv{
+    position: relative;
+    background-color: gainsboro;
+    height:calc(100vh - 64px);
+    width: 80%;
+    overflow-y: scroll;
+    /* background-position: center; */
+    background-size: cover;
+    background-repeat: repeat;
+    /* background-attachment: fixed; */
+}
+#parentDiv > div:first-child{
+    margin-top: 50vh;
+}
+#parentDiv > div:last-child{
+    margin-bottom: 50vh;
+}
+#examen{
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.topAndBotMargin{
+    height: 60vh;
+}
+
+.criterisVisibles{
+    display: block;
+}
+.criterisNoVisibles{
+    display: none;
+}
+
+.navegacioPreguntes {
+    position: fixed;
+    display: table;
+    bottom: 0px;
+    width:100%
+}
+
+.navegacioPregunta {
+    display: table-cell;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+    background-color: blanchedalmond;
+    border: 1px solid black;
+    padding: 1em;
+}
+.navegacioPregunta.navegacioActiva{
+    background-color: steelblue;
+}
+#guardarCorreccio{
+    background-color: springgreen;
+}

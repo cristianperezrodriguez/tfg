@@ -25,6 +25,10 @@ import { HomeComponent } from './home';
 import { AgGridModule } from 'ag-grid-angular';
 //ng2-pdf-viewer
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+//bootstrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//spy-scroll
+import { ScrollSpyDirective } from './shared/scroll-spy/scroll-spy.directive';
 
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -37,7 +41,7 @@ import { NovaActivitatComponent } from './nova-activitat/nova-activitat.componen
 import { LlistatActivitatsAssignaturaComponent } from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
 import { ButtonRendererComponent } from './button-renderer/button-renderer.component';
 import { LlistatPreguntesActivitatComponent } from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
-import { VisorPdfComponent } from './visor-pdf/visor-pdf.component';
+import { CorreccioExamenComponent } from './correccio-examen/correccio-examen.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,8 @@ import { VisorPdfComponent } from './visor-pdf/visor-pdf.component';
     LlistatActivitatsAssignaturaComponent,
     ButtonRendererComponent,
     LlistatPreguntesActivitatComponent,
-    VisorPdfComponent
+    CorreccioExamenComponent,
+    ScrollSpyDirective
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ import { VisorPdfComponent } from './visor-pdf/visor-pdf.component';
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes),
     AgGridModule.withComponents([ButtonRendererComponent]),
-    PdfViewerModule
+    PdfViewerModule,
+    NgbModule
   ],
   providers: [
     {

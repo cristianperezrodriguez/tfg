@@ -17,6 +17,10 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
   frameworkComponents: any;
   activitats = [];
   rowData;
+  progressBarRenderer = function(params) {
+    var percent = params.value*100;
+    return '<div class="progress"><div class="bg-success progress-bar" style="width:'+percent+'%"  role="progressbar" aria-valuenow="'+percent+'" aria-valuemin="0" aria-valuemax="100">'+percent+'%</div></div>';
+  };
   domLayout='autoHeight';
   style = {
     width: '100%',
@@ -34,9 +38,7 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
     // {field: 'id', sortable: true, resizable: true, maxWidth: 70, filter: true , headerName: 'Id', cellClass: "verticalAlignText"},
     {field: 'nom', sortable: true, resizable: true, filter: true , headerName: 'Nom', cellClass: "verticalAlignText"},
     {field: 'data', sortable: true, resizable: true, maxWidth: 150, minWidth: 90, filter: true , headerName: 'Data del examen', cellClass: "verticalAlignText"},
-    {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: ["verticalAlignText","horizontalAlignText"], cellRenderer: function(params) {
-        return '<span>'+params.value*100+'%</span><span class="fonsPercentatge" style="width:'+params.value*100+'%"></span>';
-    }},
+    {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: "verticalAlignText", cellRenderer: this.progressBarRenderer},
     {
       headerName: '',
       cellClass:  ["verticalAlignText","horizontalAlignText"],
@@ -44,7 +46,6 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
       cellRendererParams: {
         onClick: this.onClickButtonLlistatPreguntes.bind(this),
         label: 'Preguntes',
-        // materialIcon: '',
         title: 'LListat de preguntes'
       },
       autoHeight: true,
@@ -58,7 +59,6 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
       cellRendererParams: {
         onClick: this.onClickButtonCorregirActivitat.bind(this),
         label: 'Corregir',
-        // materialIcon: 'format_list_numbered',
         title: 'Corregir examen'
       },
       autoHeight: true,

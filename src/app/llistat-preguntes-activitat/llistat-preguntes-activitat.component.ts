@@ -17,6 +17,10 @@ export class LlistatPreguntesActivitatComponent implements OnInit {
   frameworkComponents: any;
   preguntes = [];
   rowData;
+  progressBarRenderer = function(params) {
+    var percent = params.value*100;
+    return '<div class="progress"><div class="bg-success progress-bar" style="width:'+percent+'%"  role="progressbar" aria-valuenow="'+percent+'" aria-valuemin="0" aria-valuemax="100">'+percent+'%</div></div>';
+  };
   domLayout='autoHeight';
   style = {
     width: '100%',
@@ -35,9 +39,7 @@ export class LlistatPreguntesActivitatComponent implements OnInit {
     {field: 'numero_pregunta', sortable: true, resizable: true, filter: true , headerName: '#Pregunta', cellClass: "verticalAlignText"},
     {field: 'valoracio_minima', sortable: true, resizable: true, filter: true , headerName: 'Valoració Mínima', cellClass: "verticalAlignText"},
     {field: 'valoracio_maxima', sortable: true, resizable: true, filter: true , headerName: 'Valoració Mànima', cellClass: "verticalAlignText"},
-    {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: ["verticalAlignText","horizontalAlignText"], cellRenderer: function(params) {
-        return '<span>'+params.value*100+'%</span><span class="fonsPercentatge" style="width:'+params.value*100+'%"></span>';
-    }},
+    {field: 'percentatge_correccio', resizable: true, sortable: true, filter: true , headerName: 'Percentatge de correcció', cellClass: "verticalAlignText", cellRenderer: this.progressBarRenderer},
     {
       headerName: '',
       cellClass: ["verticalAlignText","horizontalAlignText"],
@@ -45,7 +47,6 @@ export class LlistatPreguntesActivitatComponent implements OnInit {
       cellRendererParams: {
         onClick: this.onClickButtonCorregitPregunta.bind(this),
         label: 'Corregir',
-        // materialIcon: 'format_list_numbered',
         title: 'Corregir pregunta'
       },
       autoHeight: true,

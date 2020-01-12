@@ -9,9 +9,9 @@
         <button mat-icon-button (click)="navTo('dashboard')" >
             <mat-icon>home</mat-icon>
         </button>
-        <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
+        <!-- <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
             <mat-icon>menu</mat-icon>
-        </button>
+        </button> -->
         <span fxFlex></span>
         <!-- ============================================================== -->
         <!-- app header component - style you can find in header.scss / header.component.ts-->
@@ -25,12 +25,12 @@
         <!-- ============================================================== -->
         <!-- Sidebar - style you can find in sidebar.scss -->
         <!-- ============================================================== -->
-        <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'" fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches"  >
+        <!-- <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'" fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches"  >
             
                 <app-sidebar></app-sidebar>
                
             
-        </mat-sidenav>
+        </mat-sidenav> -->
         <!-- ============================================================== -->
         <!-- Sidebar - style you can find in sidebar.scss -->
         <!-- ============================================================== -->
