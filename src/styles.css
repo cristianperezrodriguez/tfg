@@ -35,3 +35,12 @@ div[col-id="percentatge_correccio"].ag-cell-value span:first-of-type{
 .buttonsAccionsAgGrid .mat-button-wrapper{
     font-size: .9em !important;
 }
+
+/* calcular el tamany del scroll */
+.scrollbar-measure {
+	width: 100px;
+	height: 100px;
+	overflow: scroll;
+	position: absolute;
+	top: -9999px;
+}

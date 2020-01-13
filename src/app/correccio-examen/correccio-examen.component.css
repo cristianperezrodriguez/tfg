@@ -5,23 +5,43 @@
     height: 500px;
 }
 
-.menuCriteris{
-    transition-duration: 300ms;
-    background-color: lightcoral;
+#menuCriteris{
+    background-color: ivory;
     position: fixed;
-    height:calc(100vh - 64px);
-    width: 20%;
-    top: 64px;
+    width: 300px;
     right: 0;
-    padding: 0;
     margin: 0;
+    z-index: 1;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
+
+.criteriValor{
+    color: rgb(69, 182, 69);
+    font-weight: bold;
+}
+.ajustNotaToggle{
+    padding-top: 1em;
+}
+.titolPreguntaMenu{
+    width: 100%;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: .3em;
+}
+.menuPregunta{
+    padding: 0 1em;
+}
+
+.menuPregunta p{
+    text-align: center;
+}
+
 #parentDiv{
     position: relative;
     background-color: gainsboro;
-    height:calc(100vh - 64px);
-    width: 80%;
+    width: 100%;
     overflow-y: scroll;
+    box-sizing: content-box; /* So the width will be 100% + 17px */
     /* background-position: center; */
     background-size: cover;
     background-repeat: repeat;
@@ -39,6 +59,7 @@
     width: 100%;
     position: absolute;
     top: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .topAndBotMargin{
     height: 60vh;
@@ -51,25 +72,64 @@
     display: none;
 }
 
-.navegacioPreguntes {
-    position: fixed;
-    display: table;
-    bottom: 0px;
-    width:100%
+
+#guardarCorreccioDiv{
+    width: 100%;
+    display: inline-grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 1.3em;
+}
+#guardarCorreccioDiv button{
+    font-size: 1.4em;
 }
 
-.navegacioPregunta {
-    display: table-cell;
-    text-align: center;
-    cursor: pointer;
+
+/* BARRA DE NAVEGACIO */
+#navegacioPreguntes {
+    position: fixed;
+    bottom: 1em;
+    width: 100%;
+    padding: 0.2em;
     margin: 0 auto;
-    background-color: blanchedalmond;
-    border: 1px solid black;
-    padding: 1em;
+    text-align: center;
+    z-index: 2;
 }
-.navegacioPregunta.navegacioActiva{
-    background-color: steelblue;
+#navegacioPreguntes:after {
+    /* clear: both; */
+    content: "";
+    display: table;
 }
-#guardarCorreccio{
-    background-color: springgreen;
+#navegacioPreguntes ul {
+    width: 100%;
+    margin: 0;
+}
+
+#navegacioPreguntes ul, li {
+    list-style: none;
+    display: inline;
+    padding-left: 0px;
+}
+#navegacioPreguntes li {
+    padding: 0 1em;
+    cursor: pointer;
+}
+#navegacioPreguntes li:hover button {
+    color: #fff;
+    background-color: #67b8ff;
+}
+#navegacioPreguntes li button.navegacioActiva {
+    color: #fff;
+    background-color: #1e88e5;
+}
+/* #navegacioPreguntes li:last-child {
+    float: right;
+} */
+#navegacioPreguntes li button {
+    outline: none;
+    color: rgba(0,0,0,0.87);
+    background-color: ivory;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }

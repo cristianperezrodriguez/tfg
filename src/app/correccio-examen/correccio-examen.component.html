@@ -1,102 +1,49 @@
-<div class="menuCriteris">
-    <h3>Criteris de la {{currentSection}}</h3>
-    <div id="criteris-pregunta1" class="menuPregunta menuPregunta1"[ngClass]="{ 'current-section': currentSection === 'pregunta1' }">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 1: -0,5</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 2: -1</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 3: -2</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 4: -5</label>
-      </div>
+<div id="menuCriteris">
+    <div class="titolPreguntaMenu">
+      <h2>{{currentSectionRendered}}</h2>
     </div>
-    <div id="criteris-pregunta2" class="menuPregunta menuPregunta2" [ngClass]="{ 'current-section': currentSection === 'pregunta2' }">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 1: -4</label>
+    <div *ngFor = "let pregunta of preguntes;let i = index; let last = last" id="criteris-pregunta{{i+1}}" class="menuPregunta menuPregunta{{i+1}}" ngClass="{ 'current-section': currentSection === 'pregunta{{i+1}}' }" >
+      <p>Puntuació: {{ getValoracioCriteris(pregunta.criteris) }} / {{pregunta.valoracio_maxima}}</p>
+      <div  *ngFor = "let criteri of pregunta.criteris">
+        <mat-checkbox [(ngModel)]="criteri.checked" [disabled]="pregunta.puntuacioPersonalitzada"><div class="criteriValor">{{criteri.valor}}</div><div class="criteriDescripcio">{{criteri.descripcio}}</div></mat-checkbox><br/>
+        <mat-divider></mat-divider>
       </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 2: -0.1</label>
-      </div>
+      <mat-slide-toggle
+        class="ajustNotaToggle"
+        [color]="color"
+        [(ngModel)]="pregunta.puntuacioPersonalitzada">
+        Ajust de nota
+      </mat-slide-toggle>
+      <mat-form-field *ngIf="pregunta.puntuacioPersonalitzada">
+        <input matInput type="number" placeholder="Nota ajust" min="0" max="{{pregunta.valoracio_maxima}}">
+      </mat-form-field>
+      <mat-form-field *ngIf="pregunta.puntuacioPersonalitzada">
+        <mat-label>Explicació ajust</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="10"></textarea>
+      </mat-form-field>
     </div>
-    <div id="criteris-pregunta3" class="menuPregunta menuPregunta3" [ngClass]="{ 'current-section': currentSection === 'pregunta3' }">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 1: -0,1</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 2: -0,2</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 3: -0,4</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 4: -0,5</label>
-      </div>
-      
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 4: -0.6</label>
-      </div>
-      
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 4: -0,7</label>
-      </div>
+
+    <div id="guardarCorreccioDiv">
+      <p>Nota examen: {{getNotaExamen(preguntes)}}</p>
+      <button id="guardarCorreccio" (click)="guardar()" mat-flat-button color="primary">Guardar correcció</button>
     </div>
-    <div id="criteris-pregunta4" class="menuPregunta menuPregunta4" [ngClass]="{ 'current-section': currentSection === 'pregunta4' }">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Criteri 1: -0,1</label>
-      </div>
-    </div>
-    <div id="criteris-pregunta5" class="menuPregunta menuPregunta5" [ngClass]="{ 'current-section': currentSection === 'pregunta5' }"></div>
-    <div id="criteris-pregunta6" class="menuPregunta menuPregunta6" [ngClass]="{ 'current-section': currentSection === 'pregunta6' }"></div>
-    <!-- <div id="criteris-pregunta7" class="menuPregunta menuPregunta7" [ngClass]="{ 'current-section': currentSection === 'pregunta7' }"></div>
-    <div id="criteris-pregunta8" class="menuPregunta menuPregunta8" [ngClass]="{ 'current-section': currentSection === 'pregunta8' }"></div>
-    <div id="criteris-pregunta9" class="menuPregunta menuPregunta9" [ngClass]="{ 'current-section': currentSection === 'pregunta9' }"></div>
-    <div id="criteris-pregunta10" class="menuPregunta menuPregunta10" [ngClass]="{ 'current-section': currentSection === 'pregunta10' }"></div>
-    <div id="criteris-pregunta11" class="menuPregunta menuPregunta11" [ngClass]="{ 'current-section': currentSection === 'pregunta11' }"></div> -->
 
   </div> 
+  
   <div id="parentDiv" (window:resize)="onResize()" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)">
-    <div id="capcaleraExamen"></div>
-    <div id="pregunta1"></div>
-    <div id="pregunta2"></div>
-    <div id="pregunta3"></div>
-    <div id="pregunta4"></div>
-    <div id="pregunta5"></div>
-    <div id="pregunta6"></div>
-    <!-- <div id="pregunta7"></div>
-    <div id="pregunta8"></div>
-    <div id="pregunta9"></div>
-    <div id="pregunta10"></div>
-    <div id="pregunta11"></div> -->
+    <div id="capcaleraExamen" [ngStyle]="{'height': getTamanyCapcalera()}"></div>
+    <div  *ngFor = "let pregunta of preguntes; let i = index;" id="pregunta{{i+1}}" class="divOcultPreguntaExamen"  [ngStyle]="{'height': getTamanyPregunta(i)}" ></div>
     <img id="examen" [src]="getUrlExamen()">
   </div>
-  <div class="navegacioPreguntes">
-    <div id="navegacio-pregunta1" class="navegacioPregunta" (click)="scrollTo('pregunta1')">Pregunta 1</div>
-    <div id="navegacio-pregunta2" class="navegacioPregunta" (click)="scrollTo('pregunta2')">Pregunta 2</div>
-    <div id="navegacio-pregunta3" class="navegacioPregunta" (click)="scrollTo('pregunta3')">Pregunta 3</div>
-    <div id="navegacio-pregunta4" class="navegacioPregunta" (click)="scrollTo('pregunta4')">Pregunta 4</div>
-    <div id="navegacio-pregunta5" class="navegacioPregunta" (click)="scrollTo('pregunta5')">Pregunta 5</div>
-    <div id="navegacio-pregunta6" class="navegacioPregunta" (click)="scrollTo('pregunta6')">Pregunta 6</div>
-    <!-- <div id="navegacio-pregunta7" class="navegacioPregunta" (click)="scrollTo('pregunta7')">Pregunta 7</div>
-    <div id="navegacio-pregunta8" class="navegacioPregunta" (click)="scrollTo('pregunta8')">Pregunta 8</div>
-    <div id="navegacio-pregunta9" class="navegacioPregunta" (click)="scrollTo('pregunta8')">Pregunta 9</div>
-    <div id="navegacio-pregunta10" class="navegacioPregunta" (click)="scrollTo('pregunta10')">Pregunta 10</div>
-    <div id="navegacio-pregunta11" class="navegacioPregunta" (click)="scrollTo('pregunta11')">Pregunta 11</div> -->
-    <div id="guardarCorreccio" class="navegacioPregunta" (click)="guardar()">Guardar correcció</div>
+
+  <div id="navegacioPreguntes">
+    <div class="pagination">
+        <ul>
+            <li *ngFor = "let pregunta of preguntes; let i = index;" (click)="scrollTo(i+1)"><button mat-fab id="navegacio-pregunta{{i+1}}" class="navegacioPregunta">{{i+1}}</button></li>
+        </ul>
+    </div>
   </div>
