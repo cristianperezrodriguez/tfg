@@ -3,7 +3,8 @@
       <h2>{{currentSectionRendered}}</h2>
     </div>
     <div *ngFor = "let pregunta of preguntes;let i = index; let last = last" id="criteris-pregunta{{i+1}}" class="menuPregunta menuPregunta{{i+1}}" ngClass="{ 'current-section': currentSection === 'pregunta{{i+1}}' }" >
-      <p>Puntuació: {{ getValoracioCriteris(pregunta.criteris) }} / {{pregunta.valoracio_maxima}}</p>
+      <p>Puntuació: {{ getValoracioCriteris(pregunta) }} / {{pregunta.valoracio_maxima}}</p>
+      <p *ngIf = "!valorDelsCriterisMinim(pregunta)" class="informacioCriterisMinims"><span>*</span> El valor total dels criteris no arriba al valor de la pregunta.</p>
       <div  *ngFor = "let criteri of pregunta.criteris">
         <mat-checkbox [(ngModel)]="criteri.checked" [disabled]="pregunta.puntuacioPersonalitzada"><div class="criteriValor">{{criteri.valor}}</div><div class="criteriDescripcio">{{criteri.descripcio}}</div></mat-checkbox><br/>
         <mat-divider></mat-divider>
@@ -15,11 +16,17 @@
         Ajust de nota
       </mat-slide-toggle>
       <mat-form-field *ngIf="pregunta.puntuacioPersonalitzada">
-        <input matInput type="number" placeholder="Nota ajust" min="0" max="{{pregunta.valoracio_maxima}}">
+        <input  matInput 
+                [(ngModel)]="pregunta.puntuacioPersonalitzadaValor"
+                type="number" 
+                placeholder="Nota ajust" 
+                min="0" 
+                max="{{pregunta.valoracio_maxima}}">
       </mat-form-field>
       <mat-form-field *ngIf="pregunta.puntuacioPersonalitzada">
         <mat-label>Explicació ajust</mat-label>
         <textarea matInput
+                  [(ngModel)]="pregunta.puntuacioPersonalitzadaDescripcio"
                   cdkTextareaAutosize
                   #autosize="cdkTextareaAutosize"
                   cdkAutosizeMinRows="1"
@@ -28,7 +35,7 @@
     </div>
 
     <div id="guardarCorreccioDiv">
-      <p>Nota examen: {{getNotaExamen(preguntes)}}</p>
+      <h5>Nota examen: <span id="notaExamen"> {{getNotaExamen(preguntes)}} </span></h5>
       <button id="guardarCorreccio" (click)="guardar()" mat-flat-button color="primary">Guardar correcció</button>
     </div>
 

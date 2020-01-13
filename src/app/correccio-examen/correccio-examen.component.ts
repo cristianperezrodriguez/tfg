@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { _ } from 'underscore';
 declare var $: any;
@@ -19,16 +19,17 @@ export class CorreccioExamenComponent implements OnInit {
   currentSectionRendered: string;
   scrollBarWidth: number;
   
+  nota: number = 0;
   preguntes = [
-    {numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1, puntuacioPersonalitzada: false, tamanyPregunta: 1063, criteris: [
+    {numero_pregunta: 1, valoracio_minima: 0, valoracio_maxima: 1, puntuacioPersonalitzada: false, puntuacioPersonalitzadaValor: 0, puntuacioPersonalitzadaDescripcio: "", tamanyPregunta: 1063, criteris: [
       {valor: 0.1, descripcio: "Criteri 1", checked: false},
       {valor: 0.2, descripcio: "Criteri 2", checked: false},
       {valor: 0.3, descripcio: "Criteri 3", checked: false} 
       ]},
-      {numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 1, puntuacioPersonalitzada: false, tamanyPregunta: 590, criteris: [
+      {numero_pregunta: 2, valoracio_minima: 0, valoracio_maxima: 1, puntuacioPersonalitzada: false, puntuacioPersonalitzadaValor: 0, puntuacioPersonalitzadaDescripcio: "", tamanyPregunta: 590, criteris: [
         {valor: 1, descripcio: "Criteri 1", checked: false} 
       ]},
-      {numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 2, puntuacioPersonalitzada: false, tamanyPregunta: 1291, criteris: [
+      {numero_pregunta: 3, valoracio_minima: 0, valoracio_maxima: 2, puntuacioPersonalitzada: false, puntuacioPersonalitzadaValor: 0, puntuacioPersonalitzadaDescripcio: "", tamanyPregunta: 1291, criteris: [
         {valor: 0.1, descripcio: "Criteri 1", checked: false},
         {valor: 0.2, descripcio: "Criteri 2", checked: false},
         {valor: 0.3, descripcio: "Criteri 3", checked: false},
@@ -37,18 +38,18 @@ export class CorreccioExamenComponent implements OnInit {
         {valor: 0.6, descripcio: "Criteri 6", checked: false},
         {valor: 0.7, descripcio: "Criteri 7", checked: false}  
       ]},
-      {numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 1.5, puntuacioPersonalitzada: false, tamanyPregunta: 426, criteris: [
+      {numero_pregunta: 4, valoracio_minima: 0, valoracio_maxima: 1.5, puntuacioPersonalitzada: false, puntuacioPersonalitzadaValor: 0, puntuacioPersonalitzadaDescripcio: "", tamanyPregunta: 426, criteris: [
         {valor: 1, descripcio: "Criteri 1", checked: false},
         {valor: 0.5, descripcio: "Criteri 2", checked: false} 
       ]},
-      {numero_pregunta: 5, valoracio_minima: 0, valoracio_maxima: 3, puntuacioPersonalitzada: false, tamanyPregunta: 1170, criteris: [
+      {numero_pregunta: 5, valoracio_minima: 0, valoracio_maxima: 3, puntuacioPersonalitzada: false, puntuacioPersonalitzadaValor: 0, puntuacioPersonalitzadaDescripcio: "", tamanyPregunta: 1170, criteris: [
         {valor: 1, descripcio: "Criteri 1", checked: false},
         {valor: 0.2, descripcio: "Criteri 2", checked: false},
         {valor: 0.3, descripcio: "Criteri 3", checked: false},
         {valor: 0.3, descripcio: "Criteri 4", checked: false},
         {valor: 0.1, descripcio: "Criteri 5", checked: false} 
       ]},
-      {numero_pregunta: 6, valoracio_minima: 0, valoracio_maxima: 1.5, puntuacioPersonalitzada: false, tamanyPregunta: 934, criteris: [
+      {numero_pregunta: 6, valoracio_minima: 0, valoracio_maxima: 1.5, puntuacioPersonalitzada: false, puntuacioPersonalitzadaValor: 0, puntuacioPersonalitzadaDescripcio: "", tamanyPregunta: 934, criteris: [
         {valor: 1, descripcio: "Criteri 1", checked: false},
         {valor: 0.5, descripcio: "Criteri 2", checked: false},
         {valor: 0.3, descripcio: "Criteri 3", checked: false} 
@@ -95,7 +96,7 @@ export class CorreccioExamenComponent implements OnInit {
     this.onResize();
     
     setTimeout(function(){
-      $("#menuCriteris").css({ 'top': $("#toolbar").outerHeight() + 'px)', 'height': 'calc(100% - ' + $("#toolbar").outerHeight() + 'px)' });
+      $("#menuCriteris").css({ 'top': $("#toolbar").outerHeight() + 'px', 'height': 'calc(100% - ' + $("#toolbar").outerHeight() + 'px)' });
     },1);
     setTimeout(()=>{    //<<<---    using ()=> syntax
       this.scrollTo(-1);
@@ -197,7 +198,7 @@ export class CorreccioExamenComponent implements OnInit {
     
     //--------------CONTENIDOR DELS CRITERIS-------------
     // $("#menuCriteris").css({ 'top': $("#toolbar").outerHeight() + 'px)', 'height': 'calc(100vh - ' + ($("#navegacioPreguntes").outerHeight() + $("#toolbar").outerHeight()) + 'px)' });
-    $("#menuCriteris").css({ 'top': $("#toolbar").outerHeight() + 'px)', 'height': 'calc(100% - ' + $("#toolbar").outerHeight() + 'px)' });
+    $("#menuCriteris").css({ 'top': $("#toolbar").outerHeight() + 'px', 'height': 'calc(100% - ' + $("#toolbar").outerHeight() + 'px)' });
 
 
     //--------------DIVS OCULTS DE LES PREGUNTES-------------
@@ -219,20 +220,42 @@ export class CorreccioExamenComponent implements OnInit {
     document.body.removeChild(scrollDiv);
   }
 
-  getValoracioCriteris(criteris){
+  getValoracioCriteris(pregunta){
     var valor = 0;
-    criteris.forEach(criteri => {
-      if(criteri.checked){
-        valor += criteri.valor;
-      }
-    });
+    if(pregunta.puntuacioPersonalitzada){
+      valor += pregunta.puntuacioPersonalitzadaValor;
+    } else {
+      pregunta.criteris.forEach(criteri => {
+        if(criteri.checked){
+          valor += criteri.valor;
+          if(valor > pregunta.valoracio_maxima){
+            valor = pregunta.valoracio_maxima;
+          }
+        }
+      });
+    }
     return valor != 0 ? parseFloat(valor.toFixed(2)) : 0;
   }
+  
+  valorDelsCriterisMinim(pregunta){
+    var valor = 0;
+      pregunta.criteris.forEach(criteri => {
+          valor += criteri.valor;
+      });
+    return valor < pregunta.valoracio_maxima ? false : true;
+  }
+
   getNotaExamen(preguntes){
     var valor = 0;
     preguntes.forEach(pregunta => {
-      valor += this.getValoracioCriteris(pregunta.criteris);
+      valor += this.getValoracioCriteris(pregunta);
     });
+    this.nota = valor;
+    if(this.nota < 5){
+      $("#notaExamen").css({'color': 'red'});
+    } else{
+      $("#notaExamen").css({'color': 'green'});
+    }
     return valor != 0 ? parseFloat(valor.toFixed(2)) : 0;
   }
 
