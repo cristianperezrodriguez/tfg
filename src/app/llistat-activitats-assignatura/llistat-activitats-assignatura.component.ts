@@ -64,6 +64,19 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
       autoHeight: true,
       maxWidth: 80,
       minWidth: 60
+    },
+    {
+      headerName: '',
+      cellClass: ["verticalAlignText","horizontalAlignText"],
+      cellRendererFramework: ButtonRendererComponent,
+      cellRendererParams: {
+        onClick: this.onClickButtonCarregaCSV.bind(this),
+        label: 'Càrrega de criteris',
+        title: 'Càrrega per CSV'
+      },
+      autoHeight: true,
+      maxWidth: 160,
+      minWidth: 140
     }
     
   ];
@@ -103,6 +116,14 @@ export class LlistatActivitatsAssignaturaComponent implements OnInit {
 
   onClickButtonCorregirActivitat(e) {
     this.corregirActivitat(e.rowData.id);
+  }
+
+  carregaCriterisCVS(id_activitat:number){
+    this.router.navigate(['/carregaCriterisCSV/' + id_activitat]);
+  }
+  
+  onClickButtonCarregaCSV(e) {
+    this.carregaCriterisCVS(e.rowData.id);
   }
 
 }

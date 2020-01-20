@@ -52,7 +52,7 @@ export class LlistatPreguntesActivitatComponent implements OnInit {
       autoHeight: true,
       maxWidth: 80,
       minWidth: 60
-    },
+    }
     
   ];
 

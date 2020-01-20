@@ -1,0 +1,40 @@
+numero_pregunta,valoracio_maxima
+1,1
+2,1
+3,1
+4,1
+5,1
+6,1
+7,1
+8,1
+9,1
+10,1
+***criteris***
+num_pregunta,valor,descripcio
+1,0.3,"Criteri 1"
+1,0.2,"Criteri 2"
+1,0.5,"Criteri 3"
+1,0.4,"Criteri 4"
+2,0.3,"Criteri 1"
+2,0.2,"Criteri 2"
+3,0.1,"Criteri 1"
+3,0.2,"Criteri 2"
+3,0.3,"Criteri 3"
+3,0.4,"Criteri 4"
+4,1,"Criteri 1"
+5,0.5,"Criteri 1"
+5,1,"Criteri 2"
+6,0.3,"Criteri 1"
+6,0.2,"Criteri 2"
+6,0.5,"Criteri 3"
+6,0.4,"Criteri 4"
+7,0.3,"Criteri 1"
+7,0.2,"Criteri 2"
+8,0.1,"Criteri 1"
+8,0.2,"Criteri 2"
+8,0.3,"Criteri 3"
+8,0.4,"Criteri 4"
+9,1,"Criteri 1"
+10,0.5,"Criteri 1"
+10,1,"Criteri 2"
+

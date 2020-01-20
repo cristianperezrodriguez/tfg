@@ -42,6 +42,7 @@ import { LlistatActivitatsAssignaturaComponent } from './llistat-activitats-assi
 import { ButtonRendererComponent } from './button-renderer/button-renderer.component';
 import { LlistatPreguntesActivitatComponent } from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
 import { CorreccioExamenComponent } from './correccio-examen/correccio-examen.component';
+import { CarregaCriterisCSVComponent } from './carrega-criteris-csv/carrega-criteris-csv.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CorreccioExamenComponent } from './correccio-examen/correccio-examen.co
     ButtonRendererComponent,
     LlistatPreguntesActivitatComponent,
     CorreccioExamenComponent,
-    ScrollSpyDirective
+    ScrollSpyDirective,
+    CarregaCriterisCSVComponent
   ],
   imports: [
     BrowserModule,

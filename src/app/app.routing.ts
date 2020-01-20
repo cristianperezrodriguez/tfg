@@ -10,6 +10,7 @@ import { NovaActivitatComponent } from './nova-activitat/nova-activitat.componen
 import { LlistatActivitatsAssignaturaComponent} from './llistat-activitats-assignatura/llistat-activitats-assignatura.component';
 import { LlistatPreguntesActivitatComponent} from './llistat-preguntes-activitat/llistat-preguntes-activitat.component';
 import { CorreccioExamenComponent } from './correccio-examen/correccio-examen.component';
+import { CarregaCriterisCSVComponent } from './carrega-criteris-csv/carrega-criteris-csv.component';
 
 
 export const AppRoutes: Routes = [
@@ -37,7 +38,8 @@ export const AppRoutes: Routes = [
       { path: 'novaActivitat/:id', component: NovaActivitatComponent },
       { path: 'llistatActivitatsAssignatura/:id', component: LlistatActivitatsAssignaturaComponent },
       { path: 'llistatPreguntesActivitat/:id/:id_activitat', component: LlistatPreguntesActivitatComponent },
-      { path: 'corregirActivitat/:id', component: CorreccioExamenComponent }
+      { path: 'corregirActivitat/:id', component: CorreccioExamenComponent },
+      { path: 'carregaCriterisCSV/:id', component: CarregaCriterisCSVComponent }
     ]
   },
   { path: 'login', component: LoginComponent },

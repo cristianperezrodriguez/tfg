@@ -1,0 +1,49 @@
+<div class="container" style="padding-top: 20px;">
+    <div class="row justify-content-md-center">
+        <h3>Carrega de criteris amb CSV</h3>
+    </div>
+    <div class="row justify-content-md-center">
+        <h5 *ngIf = "assignatura">Assignatura: {{assignatura.nom}}</h5>
+    </div>
+    <div class="row justify-content-md-center">
+        <h5>Activitat: {{activitat.nom}}</h5>
+    </div>
+    <div class="row justify-content-md-center">
+        <h5 *ngIf = "assignatura">Any: {{assignatura.any}}</h5>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <input class="form-control" type='file' (change)='convertFile(input)' id='fileInput' #input aria-describedby="inputGroupFileAddon01">
+        <label for="fileInput">Selecciona el CSV amb els criteris de la activitat.</label>
+    </div>
+
+    <div *ngIf="submitted && !uploadedFileName">
+        <div style="color: red;">No s'ha seleccionat cap fitxer.</div>
+    </div>
+    
+    <div class="row justify-content-md-center">
+        <label *ngIf = "!uploadedFileName" for="btnUpload"></label>
+        <label *ngIf = "uploadedFileName" for="btnUpload">{{uploadedFileName}}</label>
+    </div>
+    
+    <div *ngFor="let pregunta of preguntes"  fxLayout="row wrap" style="padding-top: 10px;">
+        <ul>
+            <li>Pregunta numero: {{pregunta.numero_pregunta}}, Valor pregunta: {{pregunta.valoracio_maxima}}</li>
+            <ul *ngFor="let criteri of pregunta.criteris">
+                <br/>
+                <li>Valor criteri: {{criteri.valor}}</li>
+                <li>Descripció criteri: {{criteri.descripcio}}</li>  
+            </ul>
+        </ul>    
+    </div>
+      
+    <div class="row justify-content-md-center">
+        <div class="button-row" style="padding-top:10px;">
+            <button  class="btn btn-primary" (click) = "guardarCriteris()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Guardar criteris. 
+            </button>
+        </div>
+    </div>
+      
+</div> 
